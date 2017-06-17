@@ -5,7 +5,7 @@
 		$countries = unserialize($_SESSION['countries']);
 	}
 	else {
- 		$response = getCountriesResponse();
+		$response = getCountriesResponse();
 		$formattedCountries = formatCountries($response);
 
 		$_SESSION['countries'] = serialize($formattedCountries);
@@ -67,14 +67,14 @@
 	    $curl = curl_init();
 
 		curl_setopt_array($curl, array(
-		  CURLOPT_URL => "https://restcountries.eu/rest/v2/all",
-		  CURLOPT_RETURNTRANSFER => true,
-		  CURLOPT_TIMEOUT => 30,
-		  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-		  CURLOPT_CUSTOMREQUEST => "GET",
-		  CURLOPT_HTTPHEADER => array(
-		    "cache-control: no-cache"
-		  ),
+			CURLOPT_URL => "https://restcountries.eu/rest/v2/all",
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_TIMEOUT => 30,
+			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+			CURLOPT_CUSTOMREQUEST => "GET",
+			CURLOPT_HTTPHEADER => array(
+			"cache-control: no-cache"
+			),
 		));
 
 		$response = curl_exec($curl);
@@ -89,16 +89,16 @@
 
 		foreach ($response as $country) {
 			$formattedCountry = array(
-	            "name" => $country["name"],
-	            "alphaCode2" => $country["alpha2Code"],
-	            "alphaCode3" => $country["alpha3Code"],
-	            "flag" => $country["flag"],
+				"name" => $country["name"],
+				"alphaCode2" => $country["alpha2Code"],
+				"alphaCode3" => $country["alpha3Code"],
+				"flag" => $country["flag"],
 				"population" => $country["population"],
 				"region" => $country["region"],
 				"subregion" => $country["subregion"]
 	        );
 
-	        $formattedCountry = array_map('htmlentities', $formattedCountry);
+			$formattedCountry = array_map('htmlentities', $formattedCountry);
 
 			$languages = [];
 			foreach ($country["languages"] as $language) {
@@ -108,7 +108,7 @@
 
 			$formattedCountry['languages'] = $languages;
 
-	        array_push($countries, $formattedCountry);
+			array_push($countries, $formattedCountry);
 		}
 
 	    return $countries;
