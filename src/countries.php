@@ -63,18 +63,6 @@
 		return $results;
 	}
 
-	function strposInArrayElements($key, $elem)
-	{
-	    if (strpos($elem, "gr") === FALSE)
-	    {
-	         return FALSE;
-	    }
-	    else
-	    {
-	         return TRUE;
-	    }
-	}
-
 	function getCountriesResponse() {
 	    $curl = curl_init();
 
