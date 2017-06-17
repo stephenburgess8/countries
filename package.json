@@ -1,7 +1,9 @@
 {
-  "name": "react-webpack-babel",
-  "version": "0.0.3",
-  "description": "React Webpack Babel Starter Kit",
+  "name": "Countries",
+  "version": "1.0.0",
+  "description": "View information about countries by searching name, full name, or code.",
+  "author": "Stephen Burgess",
+  "license": "MIT",
   "main": "''",
   "scripts": {
     "build": "webpack --config webpack.production.config.js --progress --profile --colors",
@@ -11,11 +13,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/alicoding/react-webpack-babel"
+    "url": "https://bitbucket.org/stephenburgess8/countries"
   },
-  "author": "Ali Al Dallal",
-  "license": "MIT",
-  "homepage": "https://github.com/alicoding/react-webpack-babel#readme",
   "dependencies": {
     "node-sass": "^4.3.0",
     "react": "15.4.2",
@@ -35,6 +34,7 @@
     "extract-text-webpack-plugin": "^v2.0.0-rc.1",
     "file-loader": "^0.10.0",
     "html-webpack-plugin": "^2.26.0",
+    "jquery": "^3.1.1",
     "postcss-loader": "^1.2.2",
     "react-hot-loader": "^3.0.0-beta.6",
     "style-loader": "0.13.1",

@@ -13,8 +13,8 @@ loaders.push({
 
 module.exports = {
   entry: [
-    './src/index.jsx',
-    './styles/index.scss'
+    './app/index.jsx',
+    './app/styles/index.scss'
   ],
   output: {
     publicPath: './',		
