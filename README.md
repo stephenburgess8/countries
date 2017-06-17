@@ -8,6 +8,7 @@ elements on an HTML page so that I can find the country data I am looking for.
 * [Rest Countries api](https://restcountries.eu/)
 * [Reactv15](https://github.com/facebook/react)
 * [Data Table Styles](https://codepen.io/alassetter/pen/cyrfB)
+* [Simple React Webpack Babel Starter Kit](https://github.com/alicoding/react-webpack-babel)
 
 ### To run
 
@@ -25,7 +26,7 @@ npm install
 
 * Start PHP server in the project root directory:
 ```
-php -s
+php -S localhost:9999
 ```
 
 * Run development server:
@@ -33,3 +34,7 @@ php -s
 ```
 npm start
 ```
+
+* Navigate to:
+
+[http://localhost:8888](http://localhost:8888)
