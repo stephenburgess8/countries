@@ -1,6 +1,8 @@
 import React from 'react'
 import { escapeLabelText } from './services/string-service'
 
+import './country-results.scss'
+
 const CountryResults = ({ countries }) => {
 	const columns = [
 		'Flag',
@@ -14,7 +16,7 @@ const CountryResults = ({ countries }) => {
 	]
 
 	return (
-		<div className='country-results--wrapper'>
+		<section className='country-results--wrapper'>
 			<table className='country-results'>
 				<CountriesHeader columns={ columns } />
 				<CountriesBody
@@ -22,19 +24,25 @@ const CountryResults = ({ countries }) => {
 					countries={ countries }
 				/>
 			</table>
-		</div>
+		</section>
 	)
 }
 
 const CountriesHeader = ({ columns }) => (
 	<thead className='country-results--head'>
-		<tr className='country-results--row'>
+		<tr className='country-results--header-row'>
 			{
-				columns.map(column => (
-					<th className='country-results--header' key={ column }>
-						{ column }
-					</th>
-				))
+				columns.map(column => {
+					const property = escapeLabelText(column)
+
+					const cellClassName = `country-results--header-cell country-results--cell__${ property }`
+					const isLanguages = property === 'languages'
+					return (
+						<th className={ cellClassName } key={ property }>
+							{ column }
+						</th>
+					)
+				})
 			}
 		</tr>
 	</thead>
@@ -51,6 +59,7 @@ const CountriesBody = ({ columns, countries }) => {
 						key={ country.name }
 					/>
 				))
+
 			}
 		</tbody>
 	)
@@ -63,14 +72,28 @@ const CountryProperties = ({ columns, country }) => {
 			columns.map(column => {
 				const property = escapeLabelText(column)
 
-				const cellClassName = `country-results--cell country-results--row__${ property }`
+				const cellClassName = `country-results--cell country-results--cell__${ property }`
 				const isLanguages = property === 'languages'
+				const isImage = property === 'flag'
+
+				if (property === 'population') {
+					country[property] = parseInt(country[property]).toLocaleString('en-US')
+				}
+
 				return (
 					<td className={ cellClassName } key={ property }>
 						{
 							isLanguages
 								? <Languages languages={ country[property] } />
-								: country[property]
+								: (
+									isImage
+										? <img
+											alt={ country.name }
+											className='country-results--image'
+											src={ country[property] } 
+										  />
+										: country[property]
+								)
 						}
 					</td>
 				)

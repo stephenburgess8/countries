@@ -1,0 +1,49 @@
+.country-totals--container {
+	margin-top: 24px;
+}
+
+.country-totals {
+	background: #fff;
+	border-radius: 4px;
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+	margin-bottom: 32px;
+}
+
+.country-totals--header {
+	background-color: #1b1e24;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+	box-sizing: border-box;
+	overflow: auto;
+	width: 100%;
+}
+
+.country-totals--header-title {
+	color: #D5DDE5;
+	font-weight: 100;
+	letter-spacing: .06em;
+}
+
+.country-totals--header {
+	padding-left: 16px;
+}
+
+.country-totals--section {
+	box-sizing: border-box;
+	display: inline-block;
+	height: 100%;
+	padding-bottom: 16px;
+	padding-left: 16px;
+	padding-right: 8px;
+	vertical-align: top;
+	width: 33%;
+
+	&:first-child {
+		border-left: none;
+	}
+}
+
+.country-totals--total-label,
+.country-totals--regions-label {
+	font-size: 24px;
+}

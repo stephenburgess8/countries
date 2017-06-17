@@ -22,7 +22,7 @@ module.exports = {
   ],
   devtool: process.env.WEBPACK_DEVTOOL || 'eval-source-map',
   output: {
-    publicPath: '/',
+    publicPath: 'http://127.0.0.1:8888',
     path: path.join(__dirname, 'public'),
     filename: 'bundle.js'
   },

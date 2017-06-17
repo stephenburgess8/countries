@@ -1,3 +1,46 @@
 body {
   background: #ece7e7;
 }
+
+.container {
+	margin-left: 16px;
+	margin-right: 16px;
+	margin-top: 40px;
+}
+
+.countries {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 18px;
+}
+
+.country-form--wrapper {
+	margin-bottom: 24px;
+	margin-top: 8px;
+}
+
+.country-form--label {
+	font-size: 24px;
+}
+
+.country-form--input {
+	border: 1px solid #9ea7af;
+	font-size: 24px;
+	height: 40px;
+	margin-left: 16px;
+	padding-left: 8px;
+}
+
+.country-form--submit {
+	background-color: #EBEBEB;
+	border: 1px solid #9ea7af;
+	border-radius: 4px;
+	font-size: 24px;
+	margin-left: 8px;
+	padding: 8px 24px;
+	transition: background-color ease 150ms;
+
+	&:hover {
+		background-color: #fff;
+		cursor: pointer;
+	}
+}

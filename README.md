@@ -7,12 +7,10 @@ elements on an HTML page so that I can find the country data I am looking for.
 # Framework
 * [Rest Countries api](https://restcountries.eu/)
 * [Reactv15](https://github.com/facebook/react)
-* Webpack
-
+* [Data Table Styles](https://codepen.io/alassetter/pen/cyrfB)
 
 ### To run
 
-* You'll need to have [git](https://git-scm.com/) and [node](https://nodejs.org/en/) installed in your system.
 * Fork and clone the project:
 
 ```
@@ -23,6 +21,11 @@ git clone https://bitbucket.org/stephenburgess8/countries.git
 
 ```
 npm install
+```
+
+* Start PHP server in the project root directory:
+```
+php -s
 ```
 
 * Run development server:
