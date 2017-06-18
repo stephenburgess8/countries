@@ -22,6 +22,7 @@
 		$countries = [];
 		$regions = [];
 		$subregions = [];
+		$count = 0;
 
 		foreach ($allCountries as $country) {
 			$countryMatchesSearchInput = false;
@@ -39,6 +40,7 @@
 			}
 
 			if ($countryMatchesSearchInput) {
+				$count++;
 				array_push($countries, $country);
 				
 				$regionIsPresent = strlen($country['region']) > 0;
@@ -51,7 +53,18 @@
 					array_push($subregions, $country['subregion']);
 				}
 			}
+
+			if ($count == 50) {
+				break;
+			}
 		}
+
+		usort($countries, function($a, $b) {
+		    return $a['name'] <=> $b['name'];
+		});
+
+		sort($regions);
+		sort($subregions);
 
 		$results = array(
 			'search' => $search,

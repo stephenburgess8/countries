@@ -13,7 +13,8 @@ export default class Countries extends Component {
 				regions: [ ],
 				subregions: [ ],
 				countries: [ ]
-			}
+			},
+			error: null
 		}
 
 		this._onSubmit = this._submit.bind(this)
@@ -35,6 +36,10 @@ export default class Countries extends Component {
 					placeholder='Argentina...'
 					inputRef={ el => this.inputElement = el }
 				/>
+				<InvalidInput
+					count={ countries.countries.length }
+					error={ this.state.error }
+				/>
 				<CountryResults countries={ countries.countries } />
 				<CountryTotals
 					count={ countries.countries.length }
@@ -52,21 +57,30 @@ export default class Countries extends Component {
 	}
 
 	_makeAjaxRequest(data) {
-		$.ajax({
-		    url: 'http://localhost:9999/src/countries.php',
-		    type: "GET",
-		    dataType: 'jsonp',
-			crossDomain: true,
-			data: {
-		        countryInput: data
-		    },
-		    success: function (data) {
-		        this.setState({ countries: data })
-		    }.bind(this),
-		    error: function (jqXHR, textStatus, errorThrown) {
-		        console.error(textStatus);
-		    }.bind(this)
-		})
+		if (data.length !== 0) {
+			$.ajax({
+			    url: 'http://localhost:9999/src/countries.php',
+			    type: "GET",
+			    dataType: 'jsonp',
+				crossDomain: true,
+				data: {
+			        countryInput: data
+			    },
+			    success: function (data) {
+			        this.setState({
+			        	countries: data,
+			        	error: null
+			        })
+			    }.bind(this),
+			    error: function (jqXHR, textStatus, errorThrown) {
+			    	this.setState({ error: textStatus })
+			        console.error(textStatus);
+			    }.bind(this)
+			})
+		}
+		else {
+			this.setState({ error: 'Invalid input' })
+		}
 	}
 }			
 
@@ -75,6 +89,24 @@ const Header = ({ headerText }) => (
 		<h1 className='countries--header-title'>{ headerText }</h1>
 	</header>
 )
+
+const InvalidInput = ({ count, error }) => {
+	if (count === 0 || error) {
+		return (
+			<div className='country-form--error'>
+				<span className='country-form--error-text'>
+					{
+						error
+							? 'There was a problem with your request: ' + error
+							: 'No Results Found'
+					}
+				</span>
+			</div>
+		)
+	}
+
+	return null
+}
 
 const CountryForm = ({ label, inputRef, onSubmit, placeholder }) => {
 	return (
