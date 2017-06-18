@@ -58,6 +58,7 @@ export default class Countries extends Component {
 
 	_makeAjaxRequest(data) {
 		if (data.length !== 0) {
+			console.log(data)
 			$.ajax({
 			    url: 'http://localhost:9999/src/countries.php',
 			    type: "GET",
@@ -67,10 +68,12 @@ export default class Countries extends Component {
 			        countryInput: data
 			    },
 			    success: function (data) {
-			        this.setState({
-			        	countries: data,
-			        	error: null
-			        })
+			    	if (data.countries && data.countries.length > 0) {
+				        this.setState({
+				        	countries: data,
+				        	error: null
+				        })
+					}
 			    }.bind(this),
 			    error: function (jqXHR, textStatus, errorThrown) {
 			    	this.setState({ error: textStatus })
@@ -79,7 +82,7 @@ export default class Countries extends Component {
 			})
 		}
 		else {
-			this.setState({ error: 'Invalid input' })
+			this.setState({ error: 'Input field is empty.' })
 		}
 	}
 }			
