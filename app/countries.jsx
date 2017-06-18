@@ -58,7 +58,6 @@ export default class Countries extends Component {
 
 	_makeAjaxRequest(data) {
 		if (data.length !== 0) {
-			console.log(data)
 			$.ajax({
 			    url: 'http://localhost:9999/src/countries.php',
 			    type: "GET",
@@ -68,12 +67,15 @@ export default class Countries extends Component {
 			        countryInput: data
 			    },
 			    success: function (data) {
-			    	if (data.countries && data.countries.length > 0) {
-				        this.setState({
-				        	countries: data,
-				        	error: null
-				        })
+			    	let error = null
+			    	if (data.countries && data.countries.length <= 0) {
+				        error = '0 results found.'
 					}
+
+					this.setState({
+			        	countries: data,
+			        	error: error
+			        })
 			    }.bind(this),
 			    error: function (jqXHR, textStatus, errorThrown) {
 			    	this.setState({ error: textStatus })
