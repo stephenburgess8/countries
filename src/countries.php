@@ -59,6 +59,7 @@
 			}
 		}
 
+		// Comment out these three lines to run in PHP lower than PHP 7
 		usort($countries, function($a, $b) {
 		    return $a['name'] <=> $b['name'];
 		});
